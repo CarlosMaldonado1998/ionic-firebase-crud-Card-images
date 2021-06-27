@@ -1,20 +1,29 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="home-container ">
+    <ion-list >
+      <div class="ion-text-center">
+        <ion-label> Tarjetas </ion-label>
+      </div>
+      <ion-item *ngFor="let card of Cards" >
+        <ion-card>
+          <img src="{{card.category}}" />
+          <ion-card-header>
+            <ion-card-subtitle>{{card.name}}</ion-card-subtitle>
+            <ion-card-title>{{card.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Numero de la suerte: {{card.luckynumber}}
+          </ion-card-content>
+          <div class="ion-text-center">
+            <ion-button clear [routerLink]="['/edit-card/', card.$key]">
+              <ion-icon name="create"></ion-icon>Editar
+            </ion-button>
+            <ion-button clear (click)="deleteCard(card.$key)">
+              <ion-icon name="trash"></ion-icon> Eliminar
+            </ion-button>
+          </div>
+        </ion-card>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>

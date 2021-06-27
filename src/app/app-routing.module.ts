@@ -11,6 +11,15 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'create-card',
+    loadChildren: () => import('./create-card/create-card.module').then( m => m.CreateCardPageModule)
+  },
+  {
+    path: 'edit-card/:id',
+    loadChildren: () => import('./edit-card/edit-card.module').then( m => m.EditCardPageModule)
+  },
+
 ];
 
 @NgModule({
